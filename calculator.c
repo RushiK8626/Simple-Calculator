@@ -9,9 +9,9 @@ int main() {
     scanf("%lf %c %lf", &a, &op, &b);
 
     switch(op) {
-        case '+': result = a + b; break;
-        case '-': result = a - b; break;
-        case '*': result = a * b; break;
+        case '+': result = a + b; break;//chetan
+        case '-': result = a - b; break;//hrushab
+        case '*': result = a * b; break;//rushikesh
         case '/':
             if (b != 0)
                 result = a / b;
@@ -26,6 +26,7 @@ int main() {
             return 1;
     }
 
-    printf("Result: %.2lf\n", result);
+    printf("Result: %.2lf\n", result);//Rushikesh
+    
     return 0;
 }
