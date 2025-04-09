@@ -1,31 +1,47 @@
+// calculator.c (merged)
 #include <stdio.h>
-#include <math.h> // Added for pow()
+#include <string.h>
 
 int main() {
-    char op;
-    double a, b, result;
+    char mode[10];
+    printf("Choose mode (dec/hex): ");
+    scanf("%s", mode);
 
-    printf("Enter an expression (e.g. 2 + 3): ");
-    scanf("%lf %c %lf", &a, &op, &b);
+    if (strcmp(mode, "dec") == 0) {
+        int a, b;
+        char op;
+        printf("Enter expression (a + b): ");
+        scanf("%d %c %d", &a, &op, &b);
 
-    switch(op) {
-        case '+': result = a + b; break;
-        case '-': result = a - b; break;
-        case '*': result = a * b; break;
-        case '/':
-            if (b != 0)
-                result = a / b;
-            else {
-                printf("Error: Division by zero!\n");
-                return 1;
-            }
-            break;
-        case '^': result = pow(a, b); break; // New feature
-        default:
-            printf("Unsupported operation.\n");
-            return 1;
+        switch (op) {
+            case '+': printf("Result: %d\n", a + b); break;
+            case '-': printf("Result: %d\n", a - b); break;
+            case '*': printf("Result: %d\n", a * b); break;
+            case '/': 
+                if (b != 0) printf("Result: %d\n", a / b);
+                else printf("Error: Division by zero\n");
+                break;
+            default: printf("Invalid operator\n");
+        }
+    } else if (strcmp(mode, "hex") == 0) {
+        unsigned int a, b;
+        char op;
+        printf("Enter hexadecimal expression (A + B): ");
+        scanf("%x %c %x", &a, &op, &b);
+
+        switch (op) {
+            case '+': printf("Result: %X\n", a + b); break;
+            case '-': printf("Result: %X\n", a - b); break;
+            case '*': printf("Result: %X\n", a * b); break;
+            case '/':
+                if (b != 0) printf("Result: %X\n", a / b);
+                else printf("Error: Division by zero\n");
+                break;
+            default: printf("Invalid operator\n");
+        }
+    } else {
+        printf("Invalid mode\n");
     }
 
-    printf("Result: %.2lf\n", result);
     return 0;
 }
